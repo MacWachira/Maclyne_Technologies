@@ -58,17 +58,17 @@ function Contact() {
 
             <a 
               href="mailto:maclynetech@gmail.com"
-  className="flex items-center space-x-3 text-blue-700 hover:text-blue-900"
->
-  <span>📧 maclynetech@gmail.com</span>
-</a>
-
-<a
-  href="mailto:info@maclynetech.com"
-  className="flex items-center space-x-3 text-blue-700 hover:text-blue-900"
->
-  <span>📧 info@maclynetech.com</span>
-</a>
+              className="flex items-center space-x-3 text-blue-700 hover:text-blue-9
+            >
+              <span>📧 maclynetech@gmail.com</span>
+            </a>
+              
+            <a
+              href="mailto:info@maclynetech.com"
+              className="flex items-center space-x-3 text-blue-700 hover:text-blue-900"
+            >
+              <span>📧 info@maclynetech.com</span>
+            </a>
             
           </div>
 
