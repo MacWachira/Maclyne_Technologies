@@ -53,8 +53,23 @@ function Contact() {
               rel="noopener noreferrer"
               className="flex items-center space-x-3 text-blue-700 hover:text-blue-900"
             >
-              <Smartphone /> <span>TikTok: maclynetechnologies</span>
+              <Smartphone /> <span>maclynetechnologies</span>
             </a>
+
+            <a 
+              href="mailto:maclynetech@gmail.com"
+  className="flex items-center space-x-3 text-blue-700 hover:text-blue-900"
+>
+  <span>📧 maclynetech@gmail.com</span>
+</a>
+
+<a
+  href="mailto:info@maclynetech.com"
+  className="flex items-center space-x-3 text-blue-700 hover:text-blue-900"
+>
+  <span>📧 info@maclynetech.com</span>
+</a>
+            
           </div>
 
           {/* Contact Form */}
