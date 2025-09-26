@@ -37,7 +37,7 @@ function About() {
           <img
             src="computer-repair.jpg"
             alt="Maclyne Technologies - ICT Solutions"
-            className="rounded-2xl shadow-lg w-full md:w-15/6 object-cover"
+            className="rounded-2xl shadow-lg w-full md:w-5/6 object-cover"
           />
         </div>
       </div>
@@ -47,4 +47,5 @@ function About() {
 
 
 export default About;
+
 
