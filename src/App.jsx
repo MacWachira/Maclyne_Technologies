@@ -30,6 +30,9 @@ function App() {
       {/* Partners / Clients */}
       <Partners />
 
+      {/* Contact / Contact Us */}
+      <Contact />
+
       {/* Footer */}
       <Footer />
     </>
@@ -37,3 +40,4 @@ function App() {
 }
 
 export default App;
+
