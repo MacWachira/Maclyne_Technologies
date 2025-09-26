@@ -11,7 +11,7 @@ function Header() {
     { label: "Our Services", link: "#services" },
     { label: "Statistics", link: "#stats" },
     { label: "Our Partners", link: "#partners" },
-    { label: "Contact Us", link: "#footer" },
+    { label: "Contact Us", link: "#contact" },
   ];
 
   return (
@@ -74,4 +74,5 @@ function Header() {
 }
 
 export default Header;
+
 
