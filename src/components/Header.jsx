@@ -10,7 +10,7 @@ function Header() {
         {/* Logo + Company Name */}
         <div className="flex items-center space-x-4">
           <img
-            src="/logo.jpg" // replace with your actual logo file
+            src="/logo.PNG" // replace with your actual logo file
             alt="Maclyne Technologies Logo"
             className="h-16 w-16 object-contain"
           />
@@ -66,6 +66,7 @@ function Header() {
 }
 
 export default Header;
+
 
 
 
