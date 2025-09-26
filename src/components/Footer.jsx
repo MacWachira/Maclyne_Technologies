@@ -29,7 +29,7 @@ function Footer() {
         <div>
           <h3 className="text-xl font-bold text-white mb-4">Contact Us</h3>
           <p>Email: info@maclynetech.com</p>
-          <p>Phone: +254 700 123 456</p>
+          <p>Phone: +254 711 642 342</p>
           <p>Nairobi, Kenya</p>
         </div>
       </div>
@@ -42,3 +42,4 @@ function Footer() {
 }
 
 export default Footer;
+
