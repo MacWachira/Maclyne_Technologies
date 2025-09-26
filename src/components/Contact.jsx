@@ -58,7 +58,7 @@ function Contact() {
 
             <a 
               href="mailto:maclynetech@gmail.com"
-              className="flex items-center space-x-3 text-blue-700 hover:text-blue-9
+              className="flex items-center space-x-3 text-blue-700 hover:text-blue-900"
             >
               <span>📧 maclynetech@gmail.com</span>
             </a>
