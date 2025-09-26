@@ -6,6 +6,7 @@ const images = [
   "/networking.jpg",
   "/cloud-solutions.jpg",
   "/ict-consultancy.jpg",
+  "/networking1.jpg",
 ];
 
 function Hero() {
@@ -58,3 +59,4 @@ function Hero() {
 }
 
 export default Hero;
+
