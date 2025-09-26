@@ -35,7 +35,7 @@ function About() {
         {/* Right side - image */}
         <div className="flex justify-center">
           <img
-            src="https://img.freepik.com/free-photo/it-engineer-working-server-room_53876-139505.jpg"
+            src="computer-repair.jpg"
             alt="Maclyne Technologies - ICT Solutions"
             className="rounded-2xl shadow-lg w-full md:w-5/6 object-cover"
           />
@@ -44,5 +44,6 @@ function About() {
     </section>
   );
 }
+
 
 export default About;
