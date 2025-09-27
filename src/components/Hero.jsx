@@ -23,7 +23,7 @@ function Hero() {
   }, []);
 
   return (
-    // NOTE: id="home" makes this the anchor target for the Home link
+    // NOTE: id="hero" makes this the anchor target for the Home link
     <section id="hero" className="relative w-full h-screen overflow-hidden">
       {/* Background Slideshow */}
       {images.map((img, index) => (
@@ -70,6 +70,7 @@ function Hero() {
 }
 
 export default Hero;
+
 
 
 
