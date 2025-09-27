@@ -24,7 +24,7 @@ function Hero() {
 
   return (
     // NOTE: id="home" makes this the anchor target for the Home link
-    <section id="home" className="relative w-full h-screen overflow-hidden">
+    <section id="hero" className="relative w-full h-screen overflow-hidden">
       {/* Background Slideshow */}
       {images.map((img, index) => (
         <div
@@ -70,6 +70,7 @@ function Hero() {
 }
 
 export default Hero;
+
 
 
 
