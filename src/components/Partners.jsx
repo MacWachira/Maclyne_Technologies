@@ -7,6 +7,7 @@ function Partners() {
     "https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg",
     "https://upload.wikimedia.org/wikipedia/commons/2/20/HP_logo_2012.svg",
     "https://upload.wikimedia.org/wikipedia/commons/4/48/Dell_Logo.svg",
+    "logo1.jpg"
   ];
 
   return (
@@ -35,3 +36,4 @@ function Partners() {
 }
 
 export default Partners;
+
