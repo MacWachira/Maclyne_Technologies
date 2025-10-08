@@ -65,11 +65,19 @@ const services = [
   },
   {
     icon: <Code className="w-10 h-10 text-blue-600" />,
-    title: "Software Development",
+    title: "Website Development",
     description:
-      "Custom business applications, website development, and software integration to streamline operations and improve customer engagement.",
+      "Modern, responsive, and SEO-friendly websites. From corporate sites to e-commerce platforms, we build digital experiences that drive growth.",
     moreInfo:
-      "Our dev team builds scalable apps tailored to your processes — from ERP systems to e-commerce websites.",
+      "We utilize the latest technologies to create fast, secure, and user-friendly websites that represent your brand and convert visitors into customers.",
+  },
+  {
+    icon: <Server className="w-10 h-10 text-blue-600" />,
+    title: "Custom Software Development",
+    description:
+      "Bespoke business applications and software integration to streamline your unique operations and improve internal workflows.",
+    moreInfo:
+      "Our dev team builds scalable apps tailored to your processes, from internal management tools to complex ERP systems.",
   },
   {
     icon: <Database className="w-10 h-10 text-blue-600" />,
