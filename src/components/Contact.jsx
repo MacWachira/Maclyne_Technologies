@@ -27,19 +27,12 @@ function Contact() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Create form data for Formspree
-    const formDataToSend = new FormData();
-    Object.keys(formData).forEach(key => {
-      if (formData[key]) {
-        formDataToSend.append(key, formData[key]);
-      }
-    });
-
     try {
-      // Submit to Formspree
-      const response = await fetch('https://formspree.io/f/xovkvbrn', {
+      // Submit to Formspree using form action
+      const form = e.target;
+      const response = await fetch(form.action, {
         method: 'POST',
-        body: formDataToSend,
+        body: new FormData(form),
         headers: {
           'Accept': 'application/json'
         }
@@ -53,6 +46,17 @@ function Contact() {
           const whatsappUrl = `https://wa.me/254711642342?text=${encodeURIComponent(whatsappMessage)}`;
           window.open(whatsappUrl, '_blank');
         }, 1000);
+        
+        // Reset form
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          company: '',
+          service: '',
+          message: '',
+          budget: ''
+        });
       }
     } catch (error) {
       console.error('Form submission error:', error);
@@ -197,7 +201,12 @@ function Contact() {
               Fill out this form and we'll send a customized quote to <strong>macrusdavid@gmail.com</strong>
             </p>
             
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form 
+              onSubmit={handleSubmit}
+              action="https://formspree.io/f/xovkvbrn"
+              method="POST"
+              className="space-y-4"
+            >
               <div className="grid md:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700">
