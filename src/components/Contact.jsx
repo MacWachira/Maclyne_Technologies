@@ -76,7 +76,7 @@ function Contact() {
           <div className="bg-white shadow-lg rounded-2xl p-6">
             <h3 className="text-xl font-semibold mb-4">Send us a message</h3>
             <form
-              action="https://formspree.io/f/xovkvbrn" // replace with your Formspree form ID
+              action="https://formspree.io/f/xjkprbzn" // replace with your Formspree form ID
               method="POST"
               className="space-y-4"
             >
