@@ -113,47 +113,59 @@ function Services() {
   };
 
   return (
-    <section id="services" className="bg-white py-16 px-6 md:px-20">
-      <div className="max-w-6xl mx-auto text-center mb-12">
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-800">
-          Our Services
-        </h2>
-        <p className="text-gray-600 mt-4 max-w-3xl mx-auto">
-          Maclyne Technologies provides end-to-end ICT solutions — from
-          supplying quality hardware to delivering advanced IT consultancy,
-          cloud migration, and cybersecurity. We are your one-stop partner for
-          reliable and innovative technology services.
-        </p>
-      </div>
+    <section 
+      id="services" 
+      className="relative py-16 px-6 md:px-20 min-h-screen"
+      style={{
+        backgroundImage: "url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundAttachment: "fixed",
+      }}
+    >
+      {/* Dark overlay for better text readability */}
+      <div className="absolute inset-0 bg-black/40"></div>
+      
+      <div className="relative max-w-6xl mx-auto">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-white">
+            Our Services
+          </h2>
+          <p className="text-gray-200 mt-4 max-w-3xl mx-auto">
+            Maclyne Technologies provides end-to-end ICT solutions — from
+            supplying quality hardware to delivering advanced IT consultancy,
+            cloud migration, and cybersecurity. We are your one-stop partner for
+            reliable and innovative technology services.
+          </p>
+        </div>
 
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10 max-w-6xl mx-auto">
-        {services.map((service, index) => (
-          <div
-            key={index}
-            className="bg-gray-50 p-6 rounded-2xl shadow hover:shadow-lg transition cursor-pointer"
-            onClick={() => toggleExpand(index)}
-          >
-            <div className="mb-4 flex justify-center">{service.icon}</div>
-            <h3 className="text-xl font-semibold text-gray-800 mb-2">
-              {service.title}
-            </h3>
-            <p className="text-gray-600 text-sm leading-relaxed">
-              {service.description}
-            </p>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {services.map((service, index) => (
+            <div
+              key={index}
+              className="bg-white/90 backdrop-blur-sm p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all cursor-pointer border border-white/20 hover:bg-white/95"
+              onClick={() => toggleExpand(index)}
+            >
+              <div className="mb-4 flex justify-center">{service.icon}</div>
+              <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                {service.title}
+              </h3>
+              <p className="text-gray-600 text-sm leading-relaxed">
+                {service.description}
+              </p>
 
-            {/* Expanded section */}
-            {expandedIndex === index && (
-              <div className="mt-4 text-left">
-                <p className="text-gray-700 text-sm mb-3">{service.moreInfo}</p>
-
-              </div>
-            )}
-          </div>
-        ))}
+              {/* Expanded section */}
+              {expandedIndex === index && (
+                <div className="mt-4 text-left">
+                  <p className="text-gray-700 text-sm mb-3">{service.moreInfo}</p>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
 }
 
 export default Services;
-
