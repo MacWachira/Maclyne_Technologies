@@ -12,6 +12,8 @@ import {
   Server,
   BookOpen,
   MessageCircle,
+  ChevronDown,
+  ChevronUp,
 } from "lucide-react";
 
 const services = [
@@ -107,6 +109,7 @@ const services = [
 
 function Services() {
   const [expandedIndex, setExpandedIndex] = useState(null);
+  const [hoveredIndex, setHoveredIndex] = useState(null);
 
   const toggleExpand = (index) => {
     setExpandedIndex(expandedIndex === index ? null : index);
@@ -143,23 +146,81 @@ function Services() {
           {services.map((service, index) => (
             <div
               key={index}
-              className="bg-white/90 backdrop-blur-sm p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all cursor-pointer border border-white/20 hover:bg-white/95"
+              className={`relative bg-white/90 backdrop-blur-sm p-6 rounded-2xl shadow-lg transition-all duration-300 cursor-pointer border-2 border-transparent
+                ${expandedIndex === index 
+                  ? 'transform scale-105 bg-white/95 border-blue-500 shadow-2xl' 
+                  : 'hover:transform hover:scale-105'
+                }
+                ${hoveredIndex === index ? 'border-blue-300 shadow-xl' : ''}
+                group hover:bg-white/95`}
               onClick={() => toggleExpand(index)}
+              onMouseEnter={() => setHoveredIndex(index)}
+              onMouseLeave={() => setHoveredIndex(null)}
             >
-              <div className="mb-4 flex justify-center">{service.icon}</div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-2">
+              {/* Hover glow effect */}
+              <div className={`absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${
+                hoveredIndex === index ? 'opacity-100' : ''
+              }`}></div>
+              
+              {/* Icon container with hover animation */}
+              <div className="relative mb-4 flex justify-center">
+                <div className={`p-3 rounded-2xl bg-blue-50 group-hover:bg-blue-100 transition-colors duration-300 ${
+                  hoveredIndex === index ? 'transform scale-110' : ''
+                }`}>
+                  {React.cloneElement(service.icon, {
+                    className: `w-10 h-10 text-blue-600 transition-all duration-300 ${
+                      hoveredIndex === index ? 'transform scale-110' : ''
+                    }`
+                  })}
+                </div>
+              </div>
+
+              {/* Title with hover effect */}
+              <h3 className={`relative text-xl font-semibold text-gray-800 mb-2 transition-all duration-300 ${
+                hoveredIndex === index ? 'text-blue-700 transform scale-105' : ''
+              }`}>
                 {service.title}
               </h3>
-              <p className="text-gray-600 text-sm leading-relaxed">
+
+              {/* Description */}
+              <p className="relative text-gray-600 text-sm leading-relaxed mb-4">
                 {service.description}
               </p>
 
-              {/* Expanded section */}
-              {expandedIndex === index && (
-                <div className="mt-4 text-left">
-                  <p className="text-gray-700 text-sm mb-3">{service.moreInfo}</p>
+              {/* Expand indicator */}
+              <div className="relative flex justify-center mt-2">
+                <div className={`flex items-center justify-center w-8 h-8 rounded-full bg-gray-100 group-hover:bg-blue-100 transition-colors duration-300 ${
+                  expandedIndex === index ? 'bg-blue-100' : ''
+                }`}>
+                  {expandedIndex === index ? (
+                    <ChevronUp className="w-4 h-4 text-blue-600" />
+                  ) : (
+                    <ChevronDown className={`w-4 h-4 text-gray-500 transition-transform duration-300 ${
+                      hoveredIndex === index ? 'text-blue-600 transform scale-110' : ''
+                    }`} />
+                  )}
                 </div>
-              )}
+              </div>
+
+              {/* Expanded section with smooth animation */}
+              <div className={`relative overflow-hidden transition-all duration-500 ${
+                expandedIndex === index ? 'max-h-96 opacity-100 mt-4' : 'max-h-0 opacity-0'
+              }`}>
+                <div className="border-t border-gray-200 pt-4">
+                  <p className="text-gray-700 text-sm mb-3 leading-relaxed">
+                    {service.moreInfo}
+                  </p>
+                  <button className="inline-flex items-center text-sm font-medium text-blue-600 hover:text-blue-700 transition-colors duration-300">
+                    Learn more
+                    <ChevronDown className="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform duration-300" />
+                  </button>
+                </div>
+              </div>
+
+              {/* Pulse animation on hover */}
+              <div className={`absolute inset-0 rounded-2xl border-2 border-blue-400/30 ${
+                hoveredIndex === index ? 'animate-pulse' : 'hidden'
+              }`}></div>
             </div>
           ))}
         </div>
