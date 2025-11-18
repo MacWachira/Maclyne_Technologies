@@ -64,7 +64,47 @@ const services = [
     moreInfo: "Protect your business from threats with enterprise-grade security frameworks tailored to your industry.",
     gradient: "from-red-500 to-orange-500",
     bgGradient: "from-red-50 to-orange-50"
-  }
+  },
+  {
+    icon: <Code className="w-8 h-8" />,
+    title: "Website Development",
+    description: "Modern, responsive, and SEO-friendly websites. From corporate sites to e-commerce platforms, we build digital experiences that drive growth.",
+    moreInfo: "We utilize the latest technologies to create fast, secure, and user-friendly websites that represent your brand and convert visitors into customers.",
+    gradient: "from-blue-500 to-purple-500",
+    bgGradient: "from-blue-50 to-purple-50"
+  },
+  {
+    icon: <Server className="w-8 h-8" />,
+    title: "Custom Software Development",
+    description: "Bespoke business applications and software integration to streamline your unique operations and improve internal workflows.",
+    moreInfo: "Our dev team builds scalable apps tailored to your processes, from internal management tools to complex ERP systems.",
+    gradient: "from-green-500 to-blue-500",
+    bgGradient: "from-green-50 to-blue-50"
+  },
+  {
+    icon: <Database className="w-8 h-8" />,
+    title: "Data Backup & Recovery",
+    description: "Automated backup solutions, disaster recovery planning, and secure offsite data storage to ensure your information is always safe and retrievable.",
+    moreInfo: "We provide continuous data protection so you never lose critical information, even in emergencies.",
+    gradient: "from-purple-500 to-indigo-500",
+    bgGradient: "from-purple-50 to-indigo-50"
+  },
+  {
+    icon: <Server className="w-8 h-8" />,
+    title: "Server Installation & Management",
+    description: "Deployment and management of physical and virtual servers. We configure, monitor, and maintain servers for high availability and scalability.",
+    moreInfo: "Our server management solutions include monitoring, updates, and disaster recovery planning.",
+    gradient: "from-orange-500 to-red-500",
+    bgGradient: "from-orange-50 to-red-50"
+  },
+  {
+    icon: <BookOpen className="w-8 h-8" />,
+    title: "IT Training & Support",
+    description: "User training sessions, IT workshops, and dedicated support to empower teams with the skills to use technology effectively and securely.",
+    moreInfo: "We offer personalized training packages, from beginner computer literacy to advanced IT certifications.",
+    gradient: "from-indigo-500 to-purple-500",
+    bgGradient: "from-indigo-50 to-purple-50"
+  },
 ];
 
 function Services() {
@@ -76,28 +116,41 @@ function Services() {
   };
 
   return (
-    <section id="services" className="relative py-20 px-6 md:px-20 min-h-screen">
-      {/* Background with gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary-50 via-white to-blue-50"></div>
+    <section 
+      id="services" 
+      className="relative py-20 px-6 md:px-20 min-h-screen"
+      style={{
+        backgroundImage: "url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundAttachment: "fixed",
+      }}
+    >
+      {/* Dark overlay for better readability */}
+      <div className="absolute inset-0 bg-black/40"></div>
       
+      {/* Additional gradient overlay for better text contrast */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary-900/20 to-blue-900/30"></div>
+
       {/* Animated background elements */}
-      <div className="absolute top-0 left-0 w-72 h-72 bg-primary-200 rounded-full blur-3xl opacity-20 -translate-x-36 -translate-y-36"></div>
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-200 rounded-full blur-3xl opacity-20 translate-x-48 translate-y-48"></div>
+      <div className="absolute top-0 left-0 w-72 h-72 bg-primary-200/10 rounded-full blur-3xl opacity-50 -translate-x-36 -translate-y-36"></div>
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-200/10 rounded-full blur-3xl opacity-50 translate-x-48 translate-y-48"></div>
 
       <div className="relative max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-16 animate-slide-up">
-          <div className="inline-flex items-center gap-2 text-primary-600 font-semibold text-sm uppercase tracking-wider mb-4">
-            <div className="w-2 h-2 bg-primary-500 rounded-full"></div>
+          <div className="inline-flex items-center gap-2 text-white font-semibold text-sm uppercase tracking-wider mb-4">
+            <div className="w-2 h-2 bg-primary-400 rounded-full animate-pulse"></div>
             Our Services
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            Comprehensive <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-600 to-blue-600">ICT Solutions</span>
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+            Comprehensive <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-blue-400">ICT Solutions</span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed">
             Maclyne Technologies provides end-to-end ICT solutions — from
             supplying quality hardware to delivering advanced IT consultancy,
-            cloud migration, and cybersecurity.
+            cloud migration, and cybersecurity. We are your one-stop partner for
+            reliable and innovative technology services.
           </p>
         </div>
 
@@ -114,7 +167,7 @@ function Services() {
               onMouseLeave={() => setHoveredIndex(null)}
             >
               {/* Card */}
-              <div className={`relative bg-white rounded-3xl p-8 h-full border-2 border-gray-100 transition-all duration-500 overflow-hidden ${
+              <div className={`relative bg-white/95 backdrop-blur-sm rounded-3xl p-8 h-full border-2 border-white/20 transition-all duration-500 overflow-hidden ${
                 expandedIndex === index 
                   ? `border-${service.gradient.split('-')[1]}-500/50 shadow-2xl` 
                   : 'shadow-xl hover:shadow-2xl'
@@ -136,7 +189,7 @@ function Services() {
                     {service.title}
                   </h3>
 
-                  <p className="text-gray-600 leading-relaxed mb-6">
+                  <p className="text-gray-700 leading-relaxed mb-6">
                     {service.description}
                   </p>
 
@@ -156,8 +209,8 @@ function Services() {
                   </div>
 
                   {/* Expand Indicator */}
-                  <div className="flex items-center justify-between mt-6 pt-6 border-t border-gray-100">
-                    <span className="text-sm font-semibold text-gray-500">
+                  <div className="flex items-center justify-between mt-6 pt-6 border-t border-gray-200">
+                    <span className="text-sm font-semibold text-gray-600">
                       {expandedIndex === index ? 'Show less' : 'Learn more'}
                     </span>
                     <div className={`w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center transition-all duration-300 group-hover:bg-gradient-to-r ${service.gradient} group-hover:text-white ${
@@ -174,7 +227,7 @@ function Services() {
 
                 {/* Hover Border */}
                 <div className={`absolute inset-0 rounded-3xl border-2 border-transparent bg-gradient-to-r ${service.gradient} bg-clip-border opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10`}>
-                  <div className="absolute inset-[2px] rounded-3xl bg-white"></div>
+                  <div className="absolute inset-[2px] rounded-3xl bg-white/95 backdrop-blur-sm"></div>
                 </div>
               </div>
             </div>
@@ -183,16 +236,16 @@ function Services() {
 
         {/* CTA Section */}
         <div className="text-center mt-16 animate-fade-in">
-          <div className="bg-gradient-to-r from-primary-600 to-blue-600 rounded-3xl p-8 text-white shadow-2xl">
+          <div className="bg-white/95 backdrop-blur-sm rounded-3xl p-8 text-gray-900 shadow-2xl border border-white/20">
             <h3 className="text-2xl md:text-3xl font-bold mb-4">
               Ready to Transform Your IT Infrastructure?
             </h3>
-            <p className="text-primary-100 text-lg mb-6 max-w-2xl mx-auto">
+            <p className="text-gray-700 text-lg mb-6 max-w-2xl mx-auto">
               Let's discuss how our comprehensive ICT solutions can drive your business forward.
             </p>
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 bg-white text-primary-600 px-8 py-4 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-white/25"
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-primary-600 to-blue-600 text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-primary-500/25"
             >
               Get Free Consultation
               <ArrowRight className="w-5 h-5" />
