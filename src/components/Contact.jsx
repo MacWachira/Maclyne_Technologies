@@ -145,7 +145,7 @@ function Contact() {
             Get In Touch
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Contact <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-blue-400">Our Team</span>
+            Contact Our Team
           </h2>
           <p className="text-xl text-gray-200 max-w-2xl mx-auto leading-relaxed">
             Ready to transform your IT infrastructure? Get in touch with us for a free consultation 
