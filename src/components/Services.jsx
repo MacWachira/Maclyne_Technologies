@@ -144,7 +144,7 @@ function Services() {
             Our Services
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Comprehensive <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-400 to-blue-400">ICT Solutions</span>
+            Comprehensive ICT Solutions
           </h2>
           <p className="text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed">
             Maclyne Technologies provides end-to-end ICT solutions — from
@@ -258,3 +258,4 @@ function Services() {
 }
 
 export default Services;
+
