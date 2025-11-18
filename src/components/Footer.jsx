@@ -7,6 +7,13 @@ function Footer() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   const currentYear = new Date().getFullYear();
 
   return (
@@ -19,69 +26,70 @@ function Footer() {
       {/* Top Gradient Border */}
       <div className="h-1 bg-gradient-to-r from-primary-500 via-blue-500 to-cyan-500"></div>
 
-      <div className="relative max-w-7xl mx-auto py-16 px-6 md:px-20">
-        <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-10">
+      <div className="relative max-w-7xl mx-auto py-8 px-6 md:px-20">
+        <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-6 text-sm">
           {/* Company Info */}
           <div className="lg:col-span-1">
-            <div className="flex items-center gap-3 mb-6">
+            <div className="flex items-center gap-2 mb-4">
               <img
                 src="/logo.PNG"
                 alt="Maclyne Technologies Logo"
-                className="h-12 w-12 object-contain"
+                className="h-8 w-8 object-contain"
               />
-              <h3 className="text-2xl font-bold text-white">Maclyne Technologies</h3>
+              <h3 className="text-lg font-bold text-white">Maclyne Technologies</h3>
             </div>
-            <p className="text-gray-400 leading-relaxed mb-6">
+            <p className="text-gray-400 leading-relaxed mb-4 text-xs">
               Providing comprehensive ICT solutions including computer sales, repairs, 
               maintenance, consultancy, and LAN setups across Kenya.
             </p>
-            <div className="flex gap-4">
+            <div className="flex gap-2">
               <a
                 href="https://facebook.com/maclynetechnologies"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-gray-800 hover:bg-primary-600 rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-110"
+                className="w-8 h-8 bg-gray-800 hover:bg-primary-600 rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-110"
               >
-                <Facebook className="w-5 h-5" />
+                <Facebook className="w-4 h-4" />
               </a>
               <a
                 href="https://wa.me/254711642342"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-gray-800 hover:bg-green-600 rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-110"
+                className="w-8 h-8 bg-gray-800 hover:bg-green-600 rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-110"
               >
-                <MessageCircle className="w-5 h-5" />
+                <MessageCircle className="w-4 h-4" />
               </a>
               <a
                 href="https://www.maclynetech.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-gray-800 hover:bg-blue-600 rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-110"
+                className="w-8 h-8 bg-gray-800 hover:bg-blue-600 rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-110"
               >
-                <Globe className="w-5 h-5" />
+                <Globe className="w-4 h-4" />
               </a>
             </div>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-lg font-semibold text-white mb-6">Quick Links</h4>
-            <ul className="space-y-3">
+            <h4 className="text-base font-semibold text-white mb-3">Quick Links</h4>
+            <ul className="space-y-2">
               {[
-                { href: "#about", label: "About Us" },
-                { href: "#services", label: "Services" },
-                { href: "#stats", label: "Statistics" },
-                { href: "#partners", label: "Partners" },
-                { href: "#contact", label: "Contact" }
+                { href: "hero", label: "Home" },
+                { href: "about", label: "About Us" },
+                { href: "services", label: "Services" },
+                { href: "stats", label: "Statistics" },
+                { href: "partners", label: "Partners" },
+                { href: "contact", label: "Contact" }
               ].map((item) => (
                 <li key={item.href}>
-                  <a
-                    href={item.href}
-                    className="text-gray-400 hover:text-white transition-colors duration-300 flex items-center gap-2 group"
+                  <button
+                    onClick={() => scrollToSection(item.href)}
+                    className="text-gray-400 hover:text-white transition-colors duration-300 flex items-center gap-1 group text-xs"
                   >
-                    <div className="w-1.5 h-1.5 bg-primary-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="w-1 h-1 bg-primary-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     {item.label}
-                  </a>
+                  </button>
                 </li>
               ))}
             </ul>
@@ -89,8 +97,8 @@ function Footer() {
 
           {/* Services */}
           <div>
-            <h4 className="text-lg font-semibold text-white mb-6">Our Services</h4>
-            <ul className="space-y-3">
+            <h4 className="text-base font-semibold text-white mb-3">Our Services</h4>
+            <ul className="space-y-2">
               {[
                 "Computer Sales",
                 "Repairs & Maintenance", 
@@ -100,8 +108,8 @@ function Footer() {
                 "Cybersecurity"
               ].map((service) => (
                 <li key={service}>
-                  <span className="text-gray-400 hover:text-white transition-colors duration-300 flex items-center gap-2 group cursor-pointer">
-                    <div className="w-1.5 h-1.5 bg-blue-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <span className="text-gray-400 hover:text-white transition-colors duration-300 flex items-center gap-1 group cursor-pointer text-xs">
+                    <div className="w-1 h-1 bg-blue-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     {service}
                   </span>
                 </li>
@@ -111,45 +119,45 @@ function Footer() {
 
           {/* Contact Info */}
           <div>
-            <h4 className="text-lg font-semibold text-white mb-6">Contact Info</h4>
-            <div className="space-y-4">
-              <div className="flex items-center gap-3 group">
-                <div className="w-10 h-10 bg-primary-600 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <Phone className="w-5 h-5 text-white" />
+            <h4 className="text-base font-semibold text-white mb-3">Contact Info</h4>
+            <div className="space-y-3">
+              <div className="flex items-center gap-2 group">
+                <div className="w-6 h-6 bg-primary-600 rounded flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <Phone className="w-3 h-3 text-white" />
                 </div>
                 <div>
                   <a
                     href="tel:+254711642342"
-                    className="text-gray-400 hover:text-white transition-colors duration-300 block font-semibold"
+                    className="text-gray-400 hover:text-white transition-colors duration-300 block font-semibold text-xs"
                   >
                     +254 711 642 342
                   </a>
-                  <span className="text-sm text-gray-500">Call us anytime</span>
+                  <span className="text-xs text-gray-500">Call us anytime</span>
                 </div>
               </div>
 
-              <div className="flex items-center gap-3 group">
-                <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <Mail className="w-5 h-5 text-white" />
+              <div className="flex items-center gap-2 group">
+                <div className="w-6 h-6 bg-blue-600 rounded flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <Mail className="w-3 h-3 text-white" />
                 </div>
                 <div>
                   <a
                     href="mailto:info@maclynetech.com"
-                    className="text-gray-400 hover:text-white transition-colors duration-300 block font-semibold"
+                    className="text-gray-400 hover:text-white transition-colors duration-300 block font-semibold text-xs"
                   >
                     info@maclynetech.com
                   </a>
-                  <span className="text-sm text-gray-500">Email us</span>
+                  <span className="text-xs text-gray-500">Email us</span>
                 </div>
               </div>
 
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-green-600 rounded-lg flex items-center justify-center">
-                  <MapPin className="w-5 h-5 text-white" />
+              <div className="flex items-center gap-2">
+                <div className="w-6 h-6 bg-green-600 rounded flex items-center justify-center">
+                  <MapPin className="w-3 h-3 text-white" />
                 </div>
                 <div>
-                  <span className="text-gray-400 block font-semibold">Nairobi, Kenya</span>
-                  <span className="text-sm text-gray-500">Service nationwide</span>
+                  <span className="text-gray-400 block font-semibold text-xs">Nairobi, Kenya</span>
+                  <span className="text-xs text-gray-500">Service nationwide</span>
                 </div>
               </div>
             </div>
@@ -157,12 +165,12 @@ function Footer() {
         </div>
 
         {/* Bottom Section */}
-        <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <div className="text-gray-500 text-sm">
+        <div className="border-t border-gray-800 mt-6 pt-4 flex flex-col md:flex-row justify-between items-center gap-3">
+          <div className="text-gray-500 text-xs">
             © {currentYear} Maclyne Technologies. All rights reserved.
           </div>
           
-          <div className="flex items-center gap-6 text-sm text-gray-500">
+          <div className="flex items-center gap-4 text-xs text-gray-500">
             <a href="#" className="hover:text-white transition-colors duration-300">Privacy Policy</a>
             <a href="#" className="hover:text-white transition-colors duration-300">Terms of Service</a>
             <a href="#" className="hover:text-white transition-colors duration-300">Cookie Policy</a>
@@ -171,10 +179,10 @@ function Footer() {
           {/* Scroll to Top Button */}
           <button
             onClick={scrollToTop}
-            className="bg-primary-600 hover:bg-primary-700 text-white p-3 rounded-xl transition-all duration-300 transform hover:scale-110 hover:-translate-y-1 flex items-center gap-2"
+            className="bg-primary-600 hover:bg-primary-700 text-white p-2 rounded-lg transition-all duration-300 transform hover:scale-110 flex items-center gap-1 text-xs"
           >
-            <ArrowUp className="w-5 h-5" />
-            <span className="text-sm font-semibold">Back to Top</span>
+            <ArrowUp className="w-3 h-3" />
+            <span>Top</span>
           </button>
         </div>
       </div>
@@ -184,9 +192,9 @@ function Footer() {
         href="https://wa.me/254711642342"
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 w-14 h-14 bg-green-500 hover:bg-green-600 text-white rounded-full flex items-center justify-center shadow-2xl transition-all duration-300 transform hover:scale-110 z-50"
+        className="fixed bottom-4 right-4 w-12 h-12 bg-green-500 hover:bg-green-600 text-white rounded-full flex items-center justify-center shadow-2xl transition-all duration-300 transform hover:scale-110 z-50"
       >
-        <MessageCircle className="w-6 h-6" />
+        <MessageCircle className="w-5 h-5" />
       </a>
     </footer>
   );
