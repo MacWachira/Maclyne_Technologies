@@ -44,8 +44,8 @@ function Hero() {
         </div>
       ))}
 
-      {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-primary-900/70 to-primary-700/50"></div>
+      {/* Dark Overlay for better text readability */}
+      <div className="absolute inset-0 bg-black/30"></div>
       
       {/* Animated Background Pattern */}
       <div className="absolute inset-0 opacity-10">
@@ -86,7 +86,7 @@ function Hero() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
             <a
               href="#services"
-              className="bg-primary-600 hover:bg-primary-700 text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-primary-500/25 flex items-center gap-2"
+              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-blue-500/25 flex items-center gap-2"
             >
               Discover Our Services
             </a>
