@@ -14,6 +14,7 @@ function Footer() {
     }
   };
 
+  // Auto-updating copyright year
   const currentYear = new Date().getFullYear();
 
   return (
@@ -90,9 +91,9 @@ function Footer() {
           </div>
         </div>
 
-        {/* Bottom Bar */}
+        {/* Bottom Bar with Auto-Updating Year */}
         <div className="border-t border-gray-800 mt-6 pt-4 flex flex-col md:flex-row justify-between items-center gap-2 text-xs text-gray-500">
-          <span>© {currentYear} Maclyne Technologies</span>
+          <span>© {currentYear} Maclyne Technologies. All rights reserved.</span>
           <div className="flex gap-4">
             <a href="#" className="hover:text-white">Privacy</a>
             <a href="#" className="hover:text-white">Terms</a>
