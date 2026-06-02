@@ -1,15 +1,27 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Add at the end of index.css */
 
-/* Custom global styles */
-body {
-  font-family: 'Inter', sans-serif;
-  background-color: #f9fafb;
-  margin: 0;
-  padding: 0;
+/* Extra mobile fixes */
+@media (max-width: 640px) {
+  .container, .max-w-7xl, .mx-auto {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  /* Fix any overflow from grid sections */
+  .grid {
+    overflow-x: hidden;
+  }
+  
+  /* Ensure images don't cause overflow */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
 }
 
-h1, h2, h3, h4 {
-  font-family: 'Inter', sans-serif;
+/* Hide scrollbar on mobile while keeping functionality */
+@media (max-width: 768px) {
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
 }
