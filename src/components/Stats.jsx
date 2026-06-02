@@ -5,21 +5,21 @@ import { Users, FolderCheck, Calendar, Clock } from "lucide-react";
 const stats = [
   { 
     label: "Happy Clients", 
-    value: "500", 
+    value: "100", 
     suffix: "+",
     icon: <Users className="w-8 h-8" />,
     color: "from-blue-500 to-cyan-500"
   },
   { 
     label: "Projects Completed", 
-    value: "300", 
+    value: "100", 
     suffix: "+",
     icon: <FolderCheck className="w-8 h-8" />,
     color: "from-green-500 to-emerald-500"
   },
   { 
     label: "Years of Experience", 
-    value: "10", 
+    value: "5", 
     suffix: "+",
     icon: <Calendar className="w-8 h-8" />,
     color: "from-purple-500 to-pink-500"
