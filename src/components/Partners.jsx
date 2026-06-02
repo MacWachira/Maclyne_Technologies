@@ -6,32 +6,32 @@ function Partners() {
   const partners = [
     {
       name: "Microsoft",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/0/08/Microsoft_logo_%282012%29.svg",
+      logo: "https://img.icons8.com/color/480/microsoft.png",
       description: "Global Technology Partner"
     },
     {
       name: "Apple",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg", 
+      logo: "https://img.icons8.com/color/480/mac-logo.png",
       description: "Authorized Reseller"
     },
     {
       name: "HP",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/2/20/HP_logo_2012.svg",
+      logo: "https://img.icons8.com/color/480/hp.png",
       description: "Premium Partner"
     },
     {
       name: "Dell",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/4/48/Dell_Logo.svg",
+      logo: "https://img.icons8.com/color/480/dell.png",
       description: "Technology Alliance"
     },
     {
       name: "Cisco",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/0/08/Cisco_logo_blue_2016.svg",
+      logo: "https://img.icons8.com/color/480/cisco.png",
       description: "Networking Partner"
     },
     {
       name: "Intel",
-      logo: "https://upload.wikimedia.org/wikipedia/commons/7/7d/Intel_logo_%282006-2020%29.svg",
+      logo: "https://img.icons8.com/color/480/intel.png",
       description: "Technology Partner"
     }
   ];
@@ -94,7 +94,7 @@ function Partners() {
                 </div>
               </div>
 
-              {/* Floating Element */}
+              {/* Floating Elements */}
               <div className="absolute -top-2 -right-2 w-4 h-4 bg-primary-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200"></div>
               <div className="absolute -bottom-2 -left-2 w-4 h-4 bg-blue-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-300"></div>
             </div>
