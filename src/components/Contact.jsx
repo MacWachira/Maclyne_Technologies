@@ -1,8 +1,9 @@
 // src/components/Contact.jsx
 import React, { useState } from "react";
-import { Phone, Globe, Facebook, MessageCircle, Send, Smartphone, Mail, User, Building, FileText, Clock, CheckCircle, Award, ThumbsUp, HelpCircle } from "lucide-react";
+import { Phone, Globe, Facebook, MessageCircle, Send, Smartphone, Mail, User, Building, FileText, Clock, CheckCircle, Award, ThumbsUp, HelpCircle, X, ArrowRight } from "lucide-react";
 
 function Contact() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -11,12 +12,9 @@ function Contact() {
     service: '',
     message: ''
   });
-  
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState('');
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedService, setSelectedService] = useState("");
 
   const openQuoteModal = () => {
     setIsModalOpen(true);
@@ -25,8 +23,8 @@ function Contact() {
 
   const closeModal = () => {
     setIsModalOpen(false);
-    setSelectedService("");
     setSubmitError('');
+    setIsSubmitted(false);
     document.body.style.overflow = 'unset';
   };
 
@@ -70,7 +68,6 @@ function Contact() {
         
         setTimeout(() => {
           closeModal();
-          setIsSubmitted(false);
         }, 3000);
       } else {
         const errorData = await response.json();
@@ -89,49 +86,6 @@ function Contact() {
     const url = `https://wa.me/254711642342?text=${encodeURIComponent(message)}`;
     window.open(url, '_blank');
   };
-
-  if (isSubmitted && !isModalOpen) {
-    return (
-      <section 
-        id="contact" 
-        className="relative py-20 px-6 md:px-20 min-h-screen"
-        style={{
-          backgroundImage: "url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundAttachment: "fixed",
-        }}
-      >
-        <div className="absolute inset-0 bg-black/40"></div>
-        <div className="absolute inset-0 bg-gradient-to-br from-primary-900/20 to-blue-900/30"></div>
-
-        <div className="relative max-w-5xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-8 text-center">
-            Contact Us
-          </h2>
-          <div className="bg-green-50/95 backdrop-blur-sm border border-green-200 rounded-2xl p-8 text-center shadow-2xl">
-            <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Mail className="w-8 h-8 text-green-600" />
-            </div>
-            <h3 className="text-2xl font-bold text-green-800 mb-2">Thank You!</h3>
-            <p className="text-green-700 mb-4">
-              Your quotation request has been submitted successfully to macrusdavid@gmail.com.
-            </p>
-            <p className="text-green-600 mb-6">
-              We've opened WhatsApp for you to send immediate follow-up. We'll get back to you within 24 hours.
-            </p>
-            <button
-              onClick={openWhatsApp}
-              className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg"
-            >
-              <MessageCircle className="w-5 h-5" />
-              Open WhatsApp Again
-            </button>
-          </div>
-        </div>
-      </section>
-    );
-  }
 
   return (
     <>
@@ -370,11 +324,11 @@ function Contact() {
         </div>
       </section>
 
-      {/* Full Screen Modal Overlay for Quotation Form */}
+      {/* Modal - Separate from main content */}
       {isModalOpen && (
         <div className="fixed inset-0 z-50 overflow-y-auto" style={{ backgroundColor: 'rgba(0, 0, 0, 0.85)', backdropFilter: 'blur(8px)' }}>
           <div className="min-h-screen px-4 py-8 flex items-center justify-center">
-            <div className="relative max-w-2xl w-full bg-white rounded-3xl shadow-2xl overflow-hidden animate-slide-up">
+            <div className="relative max-w-2xl w-full bg-white rounded-3xl shadow-2xl overflow-hidden">
               {/* Modal Header */}
               <div className="bg-gradient-to-r from-primary-600 to-blue-600 px-8 py-6 flex justify-between items-center">
                 <div>
@@ -389,7 +343,7 @@ function Contact() {
                 </button>
               </div>
 
-              {/* Modal Body - Form */}
+              {/* Modal Body */}
               <div className="px-8 py-6 max-h-[70vh] overflow-y-auto">
                 {isSubmitted ? (
                   <div className="text-center py-12">
@@ -570,7 +524,3 @@ function Contact() {
 }
 
 export default Contact;
-
-// Import ArrowRight at the top with other icons
-// Add to the import line:
-// import { ..., ArrowRight } from "lucide-react";
