@@ -75,17 +75,17 @@ function Footer() {
             <h4 className="text-base font-semibold text-white mb-3">Quick Links</h4>
             <ul className="space-y-2">
               {[
-                { href: "hero", label: "Home" },
-                { href: "about", label: "About Us" },
-                { href: "services", label: "Services" },
-                { href: "stats", label: "Statistics" },
-                { href: "partners", label: "Partners" },
-                { href: "contact", label: "Contact" }
+                { id: "hero", label: "Home" },
+                { id: "about", label: "About Us" },
+                { id: "services", label: "Services" },
+                { id: "stats", label: "Statistics" },
+                { id: "partners", label: "Partners" },
+                { id: "contact", label: "Contact" }
               ].map((item) => (
-                <li key={item.href}>
+                <li key={item.id}>
                   <button
-                    onClick={() => scrollToSection(item.href)}
-                    className="text-gray-400 hover:text-white transition-colors duration-300 flex items-center gap-1 group text-xs"
+                    onClick={() => scrollToSection(item.id)}
+                    className="text-gray-400 hover:text-white transition-colors duration-300 flex items-center gap-1 group text-xs cursor-pointer"
                   >
                     <div className="w-1 h-1 bg-primary-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     {item.label}
@@ -95,7 +95,7 @@ function Footer() {
             </ul>
           </div>
 
-          {/* Services */}
+          {/* Services - Now clickable and scroll to services section */}
           <div>
             <h4 className="text-base font-semibold text-white mb-3">Our Services</h4>
             <ul className="space-y-2">
@@ -105,13 +105,18 @@ function Footer() {
                 "LAN & Networking",
                 "ICT Consultancy",
                 "Cloud Solutions",
-                "Cybersecurity"
+                "Cybersecurity",
+                "Website Development",
+                "Custom Software Development"
               ].map((service) => (
                 <li key={service}>
-                  <span className="text-gray-400 hover:text-white transition-colors duration-300 flex items-center gap-1 group cursor-pointer text-xs">
+                  <button
+                    onClick={() => scrollToSection("services")}
+                    className="text-gray-400 hover:text-white transition-colors duration-300 flex items-center gap-1 group text-xs cursor-pointer w-full text-left"
+                  >
                     <div className="w-1 h-1 bg-blue-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     {service}
-                  </span>
+                  </button>
                 </li>
               ))}
             </ul>
