@@ -1,6 +1,6 @@
 // src/components/Header.jsx
 import React, { useState, useEffect } from "react";
-import { X, Send, User, Mail, Phone, Building, MessageCircle, ArrowRight } from "lucide-react";
+import { X, Send, User, Mail, Phone, Building, MessageCircle, Menu } from "lucide-react";
 
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -71,7 +71,7 @@ function Header() {
       if (response.ok) {
         setIsSubmitted(true);
         
-        const whatsappMessage = `QUOTATION REQUEST FROM HEADER%0A%0AName: ${formData.name}%0APhone: ${formData.phone}%0AEmail: ${formData.email}%0ACompany: ${formData.company || 'Not specified'}%0AService: ${formData.service || 'Not specified'}%0AMessage: ${formData.message.substring(0, 150)}...`;
+        const whatsappMessage = `QUOTATION REQUEST%0A%0AName: ${formData.name}%0APhone: ${formData.phone}%0AEmail: ${formData.email}%0ACompany: ${formData.company || 'Not specified'}%0AService: ${formData.service || 'Not specified'}%0AMessage: ${formData.message.substring(0, 150)}...`;
         const whatsappUrl = `https://wa.me/254711642342?text=${whatsappMessage}`;
         window.open(whatsappUrl, '_blank');
         
@@ -102,10 +102,9 @@ function Header() {
   const navItems = [
     { href: "#hero", label: "Home" },
     { href: "#about", label: "About Us" },
-    { href: "#services", label: "Our Services" },
-    { href: "#stats", label: "Statistics" },
-    { href: "#partners", label: "Our Partners" },
-    { href: "#contact", label: "Contact Us" },
+    { href: "#services", label: "Services" },
+    { href: "#partners", label: "Partners" },
+    { href: "#contact", label: "Contact" },
   ];
 
   return (
@@ -113,30 +112,31 @@ function Header() {
       <header className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
         scrolled 
           ? 'bg-white/95 backdrop-blur-md shadow-lg py-2' 
-          : 'bg-transparent py-4'
+          : 'bg-transparent py-3 md:py-4'
       }`}>
-        <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
+        <div className="w-full px-4 md:px-6 lg:px-8 flex justify-between items-center">
           {/* Logo + Company Name */}
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center gap-2 md:gap-3 flex-shrink-0">
             <img
               src="/logo.PNG"
               alt="Maclyne Technologies Logo"
-              className="h-12 w-12 object-contain transition-transform duration-300 hover:scale-110"
+              className="h-8 md:h-10 lg:h-12 w-8 md:w-10 lg:w-12 object-contain transition-transform duration-300 hover:scale-110"
             />
-            <h1 className={`text-2xl font-bold transition-colors duration-300 ${
+            <h1 className={`text-sm md:text-lg lg:text-2xl font-bold transition-colors duration-300 leading-tight ${
               scrolled ? 'text-primary-600' : 'text-white'
             }`}>
-              Maclyne Technologies
+              <span className="hidden xs:inline">Maclyne Technologies</span>
+              <span className="xs:hidden">Maclyne Tech</span>
             </h1>
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-8">
+          <nav className="hidden lg:flex space-x-4 xl:space-x-8">
             {navItems.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
-                className={`font-semibold transition-all duration-300 hover:text-primary-500 relative group ${
+                className={`font-semibold transition-all duration-300 hover:text-primary-500 relative group text-sm xl:text-base whitespace-nowrap ${
                   scrolled ? 'text-gray-700' : 'text-white'
                 }`}
               >
@@ -146,35 +146,36 @@ function Header() {
             ))}
           </nav>
 
-          {/* CTA Button - Now opens modal */}
+          {/* CTA Button */}
           <button
             onClick={openQuoteModal}
-            className="hidden md:block bg-primary-600 hover:bg-primary-700 text-white px-6 py-2.5 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-primary-500/25 cursor-pointer"
+            className="hidden lg:block bg-primary-600 hover:bg-primary-700 text-white px-4 xl:px-6 py-2 rounded-full font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-primary-500/25 cursor-pointer text-sm xl:text-base whitespace-nowrap"
           >
             Get Quote
           </button>
 
           {/* Mobile Menu Button */}
           <button
-            className={`md:hidden text-2xl transition-colors duration-300 ${
-              scrolled ? 'text-gray-700' : 'text-white'
+            className={`lg:hidden p-2 rounded-lg transition-colors duration-300 ${
+              scrolled ? 'text-gray-700 hover:bg-gray-100' : 'text-white hover:bg-white/10'
             }`}
             onClick={() => setIsOpen(!isOpen)}
+            aria-label="Toggle menu"
           >
-            {isOpen ? '✕' : '☰'}
+            <Menu className="w-6 h-6" />
           </button>
         </div>
 
         {/* Mobile Menu */}
-        <div className={`md:hidden transition-all duration-300 overflow-hidden ${
+        <div className={`lg:hidden transition-all duration-300 overflow-hidden ${
           isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
         }`}>
-          <div className="bg-white/95 backdrop-blur-md py-4 px-6 space-y-4 shadow-lg">
+          <div className={`${scrolled ? 'bg-white' : 'bg-white/95 backdrop-blur-md'} shadow-lg py-4 px-4 space-y-2 border-t border-gray-100`}>
             {navItems.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
-                className="block text-gray-700 font-semibold hover:text-primary-600 transition-colors duration-300 py-2"
+                className="block text-gray-700 font-semibold hover:text-primary-600 transition-colors duration-300 py-3 px-2 rounded-lg hover:bg-gray-50"
                 onClick={() => setIsOpen(false)}
               >
                 {item.label}
@@ -185,7 +186,7 @@ function Header() {
                 setIsOpen(false);
                 openQuoteModal();
               }}
-              className="w-full bg-primary-600 text-white text-center py-3 rounded-lg font-semibold transition-all duration-300 hover:bg-primary-700 cursor-pointer"
+              className="w-full bg-primary-600 text-white text-center py-3 rounded-lg font-semibold transition-all duration-300 hover:bg-primary-700 cursor-pointer mt-2"
             >
               Get Quote
             </button>
@@ -193,27 +194,25 @@ function Header() {
         </div>
       </header>
 
-      {/* Modal - Same as Contact and Services pages */}
+      {/* Modal */}
       {isModalOpen && (
         <div className="fixed inset-0 z-50 overflow-y-auto" style={{ backgroundColor: 'rgba(0, 0, 0, 0.85)', backdropFilter: 'blur(8px)' }}>
           <div className="min-h-screen px-4 py-8 flex items-center justify-center">
-            <div className="relative max-w-2xl w-full bg-white rounded-3xl shadow-2xl overflow-hidden">
-              {/* Modal Header */}
-              <div className="bg-gradient-to-r from-primary-600 to-blue-600 px-8 py-6 flex justify-between items-center">
+            <div className="relative max-w-2xl w-full bg-white rounded-3xl shadow-2xl overflow-hidden mx-4">
+              <div className="bg-gradient-to-r from-primary-600 to-blue-600 px-6 md:px-8 py-5 md:py-6 flex justify-between items-center">
                 <div>
-                  <h3 className="text-2xl font-bold text-white">Request a Quotation</h3>
-                  <p className="text-primary-100 text-sm mt-1">Fill in your details below</p>
+                  <h3 className="text-xl md:text-2xl font-bold text-white">Request a Quotation</h3>
+                  <p className="text-primary-100 text-xs md:text-sm mt-1">Fill in your details below</p>
                 </div>
                 <button
                   onClick={closeModal}
-                  className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300 hover:scale-110"
+                  className="w-8 h-8 md:w-10 md:h-10 bg-white/20 rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300 hover:scale-110"
                 >
-                  <X className="w-6 h-6" />
+                  <X className="w-5 h-5 md:w-6 md:h-6" />
                 </button>
               </div>
 
-              {/* Modal Body */}
-              <div className="px-8 py-6 max-h-[70vh] overflow-y-auto">
+              <div className="px-6 md:px-8 py-6 max-h-[70vh] overflow-y-auto">
                 {isSubmitted ? (
                   <div className="text-center py-12">
                     <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -223,16 +222,14 @@ function Header() {
                     <p className="text-green-700 mb-4">
                       Your quotation request has been submitted successfully.
                     </p>
-                    <p className="text-gray-600">
-                      We'll get back to you within 24 hours.
-                    </p>
+                    <p className="text-gray-600">We'll get back to you within 24 hours.</p>
                   </div>
                 ) : (
                   <form 
                     onSubmit={handleSubmit}
                     action="https://formspree.io/f/xovkvbrn"
                     method="POST"
-                    className="space-y-5"
+                    className="space-y-4 md:space-y-5"
                   >
                     {submitError && (
                       <div className="p-4 bg-red-50 border border-red-200 rounded-xl text-red-700 text-sm">
@@ -240,79 +237,67 @@ function Header() {
                       </div>
                     )}
 
-                    <div className="grid md:grid-cols-2 gap-5">
+                    <div className="grid md:grid-cols-2 gap-4 md:gap-5">
                       <div className="space-y-2">
-                        <label htmlFor="header_name" className="block text-sm font-medium text-gray-700">
-                          Full Name *
-                        </label>
+                        <label className="block text-sm font-medium text-gray-700">Full Name *</label>
                         <div className="relative">
                           <User className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
                           <input
-                            id="header_name"
                             type="text"
                             name="name"
                             required
                             value={formData.name}
                             onChange={handleChange}
-                            className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-300"
+                            className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
                             placeholder="John Doe"
                           />
                         </div>
                       </div>
 
                       <div className="space-y-2">
-                        <label htmlFor="header_company" className="block text-sm font-medium text-gray-700">
-                          Company/Organization
-                        </label>
+                        <label className="block text-sm font-medium text-gray-700">Company</label>
                         <div className="relative">
                           <Building className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
                           <input
-                            id="header_company"
                             type="text"
                             name="company"
                             value={formData.company}
                             onChange={handleChange}
-                            className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-300"
-                            placeholder="Your company name"
+                            className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+                            placeholder="Your company"
                           />
                         </div>
                       </div>
                     </div>
 
-                    <div className="grid md:grid-cols-2 gap-5">
+                    <div className="grid md:grid-cols-2 gap-4 md:gap-5">
                       <div className="space-y-2">
-                        <label htmlFor="header_email" className="block text-sm font-medium text-gray-700">
-                          Email Address *
-                        </label>
+                        <label className="block text-sm font-medium text-gray-700">Email *</label>
                         <div className="relative">
                           <Mail className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
                           <input
-                            id="header_email"
                             type="email"
                             name="email"
                             required
                             value={formData.email}
                             onChange={handleChange}
-                            className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-300"
+                            className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
                             placeholder="john@company.com"
                           />
                         </div>
                       </div>
 
                       <div className="space-y-2">
-                        <label htmlFor="header_phone" className="block text-sm font-medium text-gray-700">
-                          Phone Number *
-                        </label>
+                        <label className="block text-sm font-medium text-gray-700">Phone *</label>
                         <div className="relative">
                           <Phone className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
                           <input
-                            id="header_phone"
                             type="tel"
                             name="phone"
                             required
                             value={formData.phone}
                             onChange={handleChange}
-                            className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-300"
+                            className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
                             placeholder="+254 XXX XXX XXX"
                           />
                         </div>
@@ -320,15 +305,12 @@ function Header() {
                     </div>
 
                     <div className="space-y-2">
-                      <label htmlFor="header_service" className="block text-sm font-medium text-gray-700">
-                        Service Interested In
-                      </label>
+                      <label className="block text-sm font-medium text-gray-700">Service</label>
                       <select
-                        id="header_service"
                         name="service"
                         value={formData.service}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-300 bg-white"
+                        className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500 bg-white"
                       >
                         <option value="">Select a service (optional)</option>
                         <option value="computer-sales">Computer Sales</option>
@@ -339,27 +321,21 @@ function Header() {
                         <option value="cybersecurity">Cybersecurity</option>
                         <option value="web-development">Website Development</option>
                         <option value="software-development">Custom Software Development</option>
-                        <option value="data-backup">Data Backup & Recovery</option>
-                        <option value="server-management">Server Installation & Management</option>
-                        <option value="it-training">IT Training & Support</option>
                       </select>
                     </div>
 
                     <div className="space-y-2">
-                      <label htmlFor="header_message" className="block text-sm font-medium text-gray-700">
-                        Project Details / Requirements *
-                      </label>
+                      <label className="block text-sm font-medium text-gray-700">Message *</label>
                       <div className="relative">
                         <MessageCircle className="absolute left-4 top-4 w-5 h-5 text-gray-400" />
                         <textarea
-                          id="header_message"
                           name="message"
                           required
                           rows={4}
                           value={formData.message}
                           onChange={handleChange}
-                          className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-300 resize-none"
-                          placeholder="Please describe your project requirements, timeline, and any specific needs..."
+                          className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500 resize-none"
+                          placeholder="Please describe your project requirements..."
                         />
                       </div>
                     </div>
@@ -377,7 +353,7 @@ function Header() {
                       ) : (
                         <>
                           <Send className="w-5 h-5" />
-                          <span>Submit Quotation Request</span>
+                          <span>Submit Quotation</span>
                         </>
                       )}
                     </button>
