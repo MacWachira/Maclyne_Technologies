@@ -278,7 +278,7 @@ function Contact() {
                   {/* Description */}
                   <div className="bg-gray-50 rounded-2xl p-5 mb-8">
                     <p className="text-gray-700 leading-relaxed text-center">
-                      Tell us about your project requirements, and we'll prepare a 
+                      Tell us about your project/ service or product requirements, and we'll prepare a 
                       <strong className="text-primary-600"> personalized quotation</strong> based on your specific needs. 
                       Our team will review your request and get back to you within 24 hours.
                     </p>
