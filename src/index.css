@@ -2,21 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
-
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
 }
 
-/* Prevent fixed header from covering anchored sections.
-   Adjust 5rem (80px) if your header is taller or shorter. */
+/* Prevent fixed header from covering anchored sections */
 section {
   scroll-margin-top: 5rem;
 }
 
-/* Optional: stronger heading font look */
+/* Typography */
 h1, h2, h3, h4 {
   font-family: 'Inter', sans-serif;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f9fafb;
 }
 
 /* Sliding animation for background */
@@ -34,4 +37,54 @@ h1, h2, h3, h4 {
 
 .animate-slide {
   animation: slide 20s infinite linear;
+}
+
+/* ===== FIX HORIZONTAL SCROLL ISSUE ===== */
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+* {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Fix for animated background elements causing overflow */
+.absolute {
+  max-width: none;
+}
+
+/* Ensure all containers respect viewport */
+.max-w-7xl {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Fix for any element with negative positioning causing scroll */
+.-translate-x-36, 
+.translate-x-48,
+.-translate-x-96,
+.translate-x-96 {
+  max-width: none;
+}
+
+/* Mobile viewport fix */
+@media (max-width: 768px) {
+  .px-6 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .md\\:px-20 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .grid {
+    gap: 1.5rem;
+  }
 }
