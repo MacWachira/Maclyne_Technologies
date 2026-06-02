@@ -3,38 +3,38 @@ import React from "react";
 import { Star } from "lucide-react";
 
 function Partners() {
-  const partners = [
-    {
-      name: "Microsoft",
-      logo: "https://img.icons8.com/color/480/microsoft.png",
-      description: "Global Technology Partner"
-    },
-    {
-      name: "Apple",
-      logo: "https://img.icons8.com/color/480/mac-logo.png",
-      description: "Authorized Reseller"
-    },
-    {
-      name: "HP",
-      logo: "https://img.icons8.com/color/480/hp.png",
-      description: "Premium Partner"
-    },
-    {
-      name: "Dell",
-      logo: "https://img.icons8.com/color/480/dell.png",
-      description: "Technology Alliance"
-    },
-    {
-      name: "Cisco",
-      logo: "https://img.icons8.com/color/480/cisco.png",
-      description: "Networking Partner"
-    },
-    {
-      name: "Intel",
-      logo: "https://img.icons8.com/color/480/intel.png",
-      description: "Technology Partner"
-    }
-  ];
+const partners = [
+  {
+    name: "Microsoft",
+    logo: "https://img.icons8.com/color/480/microsoft.png",
+    description: "Global Technology Partner"
+  },
+  {
+    name: "Apple",
+    logo: "https://img.icons8.com/color/480/mac-logo.png",
+    description: "Authorized Reseller"
+  },
+  {
+    name: "HP",
+    logo: "https://img.icons8.com/color/480/hp.png",
+    description: "Premium Partner"
+  },
+  {
+    name: "Dell",
+    logo: "https://img.icons8.com/color/480/dell.png",
+    description: "Technology Alliance"
+  },
+  {
+    name: "Cisco",
+    logo: "https://cdn.worldvectorlogo.com/logos/cisco-2.svg",
+    description: "Networking Partner"
+  },
+  {
+    name: "Intel",
+    logo: "https://cdn.worldvectorlogo.com/logos/intel-6.svg",
+    description: "Technology Partner"
+  }
+];
 
   return (
     <section id="partners" className="relative py-20 px-6 md:px-20 overflow-hidden">
