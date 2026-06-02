@@ -1,6 +1,6 @@
 // src/components/Contact.jsx
 import React, { useState } from "react";
-import { Phone, Globe, Facebook, MessageCircle, Send, Smartphone, Mail, User, Building, MapPin } from "lucide-react";
+import { Phone, Globe, Facebook, MessageCircle, Send, Smartphone, Mail, User, Building } from "lucide-react";
 
 function Contact() {
   const [formData, setFormData] = useState({
@@ -9,12 +9,12 @@ function Contact() {
     phone: '',
     company: '',
     service: '',
-    message: '',
-    budget: ''
+    message: ''
   });
   
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState('');
 
   const handleChange = (e) => {
     setFormData({
@@ -26,9 +26,9 @@ function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitError('');
 
     try {
-      // Submit to Formspree using form action
       const form = e.target;
       const response = await fetch(form.action, {
         method: 'POST',
@@ -40,12 +40,11 @@ function Contact() {
 
       if (response.ok) {
         setIsSubmitted(true);
-        // Show WhatsApp alert
-        setTimeout(() => {
-          const whatsappMessage = `Hello! I've submitted a quotation request for ${formData.service}. Name: ${formData.name}, Phone: ${formData.phone}`;
-          const whatsappUrl = `https://wa.me/254711642342?text=${encodeURIComponent(whatsappMessage)}`;
-          window.open(whatsappUrl, '_blank');
-        }, 1000);
+        
+        // Open WhatsApp with submission details
+        const whatsappMessage = `QUOTATION REQUEST SUBMITTED%0A%0AName: ${formData.name}%0APhone: ${formData.phone}%0AEmail: ${formData.email}%0ACompany: ${formData.company || 'Not specified'}%0AService: ${formData.service}%0AMessage: ${formData.message.substring(0, 100)}...`;
+        const whatsappUrl = `https://wa.me/254711642342?text=${whatsappMessage}`;
+        window.open(whatsappUrl, '_blank');
         
         // Reset form
         setFormData({
@@ -54,12 +53,15 @@ function Contact() {
           phone: '',
           company: '',
           service: '',
-          message: '',
-          budget: ''
+          message: ''
         });
+      } else {
+        const errorData = await response.json();
+        setSubmitError(errorData.error || 'Submission failed. Please try again.');
       }
     } catch (error) {
       console.error('Form submission error:', error);
+      setSubmitError('Network error. Please check your connection and try again.');
     } finally {
       setIsSubmitting(false);
     }
@@ -83,10 +85,7 @@ function Contact() {
           backgroundAttachment: "fixed",
         }}
       >
-        {/* Dark overlay for better readability */}
         <div className="absolute inset-0 bg-black/40"></div>
-        
-        {/* Additional gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-br from-primary-900/20 to-blue-900/30"></div>
 
         <div className="relative max-w-5xl mx-auto">
@@ -128,13 +127,9 @@ function Contact() {
         backgroundAttachment: "fixed",
       }}
     >
-      {/* Dark overlay for better readability */}
       <div className="absolute inset-0 bg-black/40"></div>
-      
-      {/* Additional gradient overlay for visual appeal */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary-900/20 to-blue-900/30"></div>
 
-      {/* Animated background elements */}
       <div className="absolute top-0 left-0 w-72 h-72 bg-primary-200/10 rounded-full blur-3xl opacity-50 -translate-x-36 -translate-y-36"></div>
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-200/10 rounded-full blur-3xl opacity-50 translate-x-48 translate-y-48"></div>
 
@@ -156,12 +151,10 @@ function Contact() {
         <div className="grid lg:grid-cols-2 gap-10">
           {/* Contact Information */}
           <div className="space-y-8">
-            {/* Contact Info Cards */}
             <div className="bg-white/95 backdrop-blur-sm rounded-3xl p-8 shadow-2xl border border-white/20">
               <h3 className="text-2xl font-bold text-gray-900 mb-6">Get in Touch</h3>
               
               <div className="space-y-6">
-                {/* Phone */}
                 <a
                   href="tel:+254711642342"
                   className="flex items-center space-x-4 p-4 rounded-2xl bg-blue-50 hover:bg-blue-100 transition-all duration-300 group hover:scale-105"
@@ -175,7 +168,6 @@ function Contact() {
                   </div>
                 </a>
 
-                {/* WhatsApp */}
                 <a
                   href="https://wa.me/254711642342"
                   target="_blank"
@@ -191,7 +183,6 @@ function Contact() {
                   </div>
                 </a>
 
-                {/* Email */}
                 <a
                   href="mailto:info@maclynetech.com"
                   className="flex items-center space-x-4 p-4 rounded-2xl bg-purple-50 hover:bg-purple-100 transition-all duration-300 group hover:scale-105"
@@ -205,7 +196,6 @@ function Contact() {
                   </div>
                 </a>
 
-                {/* Website */}
                 <a
                   href="https://www.maclynetech.com"
                   target="_blank"
@@ -221,7 +211,6 @@ function Contact() {
                   </div>
                 </a>
 
-                {/* Social Media */}
                 <div className="flex gap-4 pt-4">
                   <a
                     href="https://facebook.com/maclynetechnologies"
@@ -245,7 +234,6 @@ function Contact() {
               </div>
             </div>
 
-            {/* Quick Contact Info */}
             <div className="bg-gradient-to-r from-primary-600 to-blue-600 rounded-3xl p-8 text-white shadow-2xl">
               <h4 className="text-xl font-bold mb-4">Get Quick Quote via WhatsApp</h4>
               <p className="text-primary-100 mb-6">
@@ -262,7 +250,7 @@ function Contact() {
             </div>
           </div>
 
-          {/* Request for Quotation Form */}
+          {/* Request for Quotation Form - Budget Range Removed */}
           <div className="bg-white/95 backdrop-blur-sm rounded-3xl p-8 shadow-2xl border border-white/20">
             <div className="mb-8">
               <h3 className="text-3xl font-bold text-gray-900 mb-2">Request a Quotation</h3>
@@ -270,6 +258,12 @@ function Contact() {
                 Fill out this form and we'll send a customized quote to <strong>macrusdavid@gmail.com</strong>
               </p>
             </div>
+            
+            {submitError && (
+              <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-xl text-red-700 text-sm">
+                {submitError}
+              </div>
+            )}
             
             <form 
               onSubmit={handleSubmit}
@@ -400,27 +394,6 @@ function Contact() {
                     className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-300 bg-white/50 backdrop-blur-sm resize-none"
                     placeholder="Please describe your project requirements, timeline, and any specific needs..."
                   />
-                </div>
-              </div>
-
-              <div className="space-y-2">
-                <label className="block text-sm font-medium text-gray-700">
-                  Budget Range (Optional)
-                </label>
-                <div className="grid grid-cols-2 gap-3">
-                  {['Under $1,000', '$1,000 - $5,000', '$5,000 - $10,000', 'Over $10,000'].map((range) => (
-                    <label key={range} className="flex items-center space-x-3 cursor-pointer p-3 rounded-lg border border-gray-300 hover:border-primary-500 transition-all duration-300 bg-white/50 backdrop-blur-sm">
-                      <input
-                        type="radio"
-                        name="budget"
-                        value={range}
-                        checked={formData.budget === range}
-                        onChange={handleChange}
-                        className="text-primary-600 focus:ring-primary-500"
-                      />
-                      <span className="text-sm text-gray-700 font-medium">{range}</span>
-                    </label>
-                  ))}
                 </div>
               </div>
 
